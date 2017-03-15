@@ -67,11 +67,13 @@
                 
             </div>
             <div class="row">
-                <div class="col-lg-2"></div>
-                <div class="col-lg-8">
-                    <h2>Top 10 beers right now!</h2>
+                <div class="col-lg-8 col-lg-offset-2">
+                    <h1 class="text-center">Top 10 beers right now!</h1>
                     <div class="ct-chart ct-bar" id="chart1" style="font-size: 500%"></div>
                 </div>
+            </div>
+            <div class="row">
+                
             </div>
             
         </div><!-- /.container -->
@@ -111,36 +113,34 @@
         </script> -->
         
         <script>
-            var valueAlc = [], i;
+            var valueAlc = [], i, min;
             var names = [];
-            $.getJSON('https://raw.githubusercontent.com/simonsben/MyBeerSite/master/Site%20v0/data/jsonOut.txt', function(jsonData) {
+            
+            $.getJSON('https://raw.githubusercontent.com/simonsben/MyBeer/master/combined/jsonOut.txt', function(jsonData) {
                 var alcs = [];
                 for(i=0;i<10;i++) {
-                    console.log(jsonData[i].name);
                     names.push(jsonData[i].name);
-                    console.log(jsonData[i].valueAlcohol);
                     valueAlc.push(jsonData[i].valueAlcohol);
                 }
-                /*
-                $.each(jsonData, function(i) {
-                    console.log(jsonData[i].name);
-                    console.log(jsonData[i].size);
-                }) */
+                min = valueAlc[9] - (valueAlc[0]-valueAlc[9]) * 0.15;
+
+                var data = {
+                    labels: names,
+                    series: [valueAlc]
+                };
+
+                var options = {
+                    fullWidth: true,
+                    fullHeight: true,
+                    low: min,
+                    height: 300+'px',
+                    chartPadding: {
+                        bottom: 50
+                    }
+
+                }; 
+                new Chartist.Bar('#chart1', data, options);  
             })
-            
-            var data = {
-                labels: names,
-                series: [valueAlc]
-            };
-
-            var options = {
-                fullWidth: true
-
-            }; 
-            new Chartist.Bar('#chart1', data);
-            
-            
-            console.log('Got to the end');
         </script>
     </body>
 </html>
