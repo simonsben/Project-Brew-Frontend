@@ -49,9 +49,9 @@
                 </div>
                 <div id="navbar" class="collapse navbar-collapse">
                     <ul class="nav navbar-nav">
-                        <li class="active"><a href="#">Home</a></li>
-                        <li><a href="#about">About</a></li>
-                        <li><a href="#contact">Contact</a></li>
+                        <li><a href="landing.html">Home</a></li>
+                        <li><a href="topTen.html">Top 10</a></li>
+                        <li class="active"><a href="#">All Beers</a></li>
                     </ul>
                 </div><!--/.nav-collapse -->
             </div>
@@ -59,16 +59,28 @@
 
         <div class="container">
             <div class="row">
-                <div class="col-lg-8 col-lg-offset-2">
+                <div class="col-lg-10 col-lg-offset-1">
                     <h1 class="text-center">Top 10 beers right now!</h1>
                     <h2 class="text-center"><small>
-                        Below is a summary of the top 10 beers based on the mL of alcohol per dollar.
+                        Below is a listing of every beer on the beer store website sotorted based on mL of alcohol per dollar.
                         </small></h2><br>
-                    <div class="ct-chart ct-bar" id="chart1" style="font-size: 500%"></div>
                 </div>
             </div>
             <div class="row">
-
+                <div class="col-lg-8 col-lg-offset-2">
+                    <table class="table table-striped" id="table1">
+                        <thread>
+                            <tr>
+                                <th>Beer</th>
+                                <th>Brewer</th>
+                                <th>Quantity</th>
+                                <th>Size (mL)</th>
+                                <th>Alcohol content</th>
+                                <th>Price</th>
+                            </tr>
+                        </thread>
+                    </table>
+                </div>
             </div>
 
         </div><!-- /.container -->
@@ -91,52 +103,13 @@
             var names = [];
 
             $.getJSON('https://raw.githubusercontent.com/simonsben/MyBeer/master/combined/jsonOut.txt', function(jsonData) {
-                var alcs = [];
-                for(i=0;i<10;i++) {
-                    names.push(jsonData[i].name);
-                    valueAlc.push(jsonData[i].valueAlcohol);
-                }
-                min = valueAlc[9] - (valueAlc[0]-valueAlc[9]) * 0.15;
-
-                var data = {
-                    labels: names,
-                    series: [valueAlc]
-                };
-
-                var options = {
-                    fullWidth: true,
-                    fullHeight: true,
-                    low: min,
-                    height: 300+'px',
-                    style: 'stroke-width: 50px',
-                    chartPadding: {
-                        bottom: 50
-                    },
-                    plugins: [
-                        Chartist.plugins.ctAxisTitle({
-                            axisX: {
-                                axisTitle: 'Time (mins)',
-                                axisClass: 'ct-axis-title',
-                                offset: {
-                                    x: 0,
-                                    y: 50
-                                },
-                                textAnchor: 'middle'
-                            },
-                            axisY: {
-                                axisTitle: 'Goals',
-                                axisClass: 'ct-axis-title',
-                                offset: {
-                                    x: 0,
-                                    y: 0
-                                },
-                                textAnchor: 'middle',
-                                flipTitle: false
-                            }
-                        })
-                    ]
-                };
-                new Chartist.Bar('#chart1', data, options);  
+                var alcs = [], tableContents = [];
+                
+                tableContents.push('<tbody>');
+                $.each(jsonData, function(i, brews) {
+                    tableContents.push('<tr><th>'+jsonData[i].name+'</th><th>'+jsonData[i].brand+'</th><th>'+jsonData[i].quantity+'</th><th>'+jsonData[i].size+'</th><th>'+jsonData[i].alcohol+'</th><th>'+jsonData[i].price+'</th></tr>')
+                })
+                $('#table1 tr:last').after(tableContents)
             })
         </script>
     </body>
