@@ -60,23 +60,24 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-10 col-lg-offset-1">
-                    <h1 class="text-center">Top 10 beers right now!</h1>
+                    <h1 class="text-center">All Beers</h1>
                     <h2 class="text-center"><small>
                         Below is a listing of every beer on the beer store website sotorted based on mL of alcohol per dollar.
                         </small></h2><br>
                 </div>
             </div>
             <div class="row">
-                <div class="col-lg-8 col-lg-offset-2">
-                    <table class="table table-striped" id="table1">
+                <div class="col-lg-10 col-lg-offset-1">
+                    <table class="table table-hover table-striped table-bordered" id="table1">
                         <thread>
                             <tr>
                                 <th>Beer</th>
                                 <th>Brewer</th>
                                 <th>Quantity</th>
                                 <th>Size (mL)</th>
-                                <th>Alcohol content</th>
+                                <th>Type</th>
                                 <th>Price</th>
+                                <th>Value (mL alc./$)</th>
                             </tr>
                         </thread>
                     </table>
@@ -103,12 +104,19 @@
             var names = [];
 
             $.getJSON('https://raw.githubusercontent.com/simonsben/MyBeer/master/combined/jsonOut.txt', function(jsonData) {
-                var alcs = [], tableContents = [];
+                var dollar, tableContents = [];
                 
                 tableContents.push('<tbody>');
                 $.each(jsonData, function(i, brews) {
-                    tableContents.push('<tr><th>'+jsonData[i].name+'</th><th>'+jsonData[i].brand+'</th><th>'+jsonData[i].quantity+'</th><th>'+jsonData[i].size+'</th><th>'+jsonData[i].alcohol+'</th><th>'+jsonData[i].price+'</th></tr>')
+                    if(jsonData[i].sale == 1) {
+                        tableContents.push('<tr class="success"><th>'+jsonData[i].name+'</th><th>'+jsonData[i].brand+'</th><th class="text-right">'+jsonData[i].quantity+'</th><th class="text-right">'+jsonData[i].size+' mL</th><th>'+jsonData[i].type+'</th><th class="text-right">'+jsonData[i].price.toFixed(2)+' $</th><th class="text-right">'+jsonData[i].valueAlcohol.toFixed(3)+' mL/$</th></tr>');
+                        console.log('sale flagged.')
+                    }
+                    else {
+                        tableContents.push('<tr><th>'+jsonData[i].name+'</th><th>'+jsonData[i].brand+'</th><th class="text-right">'+jsonData[i].quantity+'</th><th class="text-right">'+jsonData[i].size+' mL</th><th>'+jsonData[i].type+'</th><th class="text-right">'+jsonData[i].price.toFixed(2)+' $</th><th class="text-right">'+jsonData[i].valueAlcohol.toFixed(3)+' mL/$</th></tr>');
+                    }
                 })
+                tableContents.push('</tbody>');
                 $('#table1 tr:last').after(tableContents)
             })
         </script>
