@@ -50,8 +50,8 @@
                 <div id="navbar" class="collapse navbar-collapse">
                     <ul class="nav navbar-nav">
                         <li><a href="landing.html">Home</a></li>
-                        <li class="active"><a href="#">Top 10</a></li>
-                        <li><a href="allBeers.html">All Beers</a></li>
+                        <li><a href="topTen.html">Top 10</a></li>
+                        <li class="active"><a href="#">All Beers</a></li>
                         <li><a href="onSale.html">On Sale</a></li>
                     </ul>
                 </div><!--/.nav-collapse -->
@@ -60,17 +60,16 @@
 
         <div class="container">
             <div class="row">
-                <div class="col-lg-8 col-lg-offset-2">
-                    <h1 class="text-center">Top 10 Beers Right Now</h1>
+                <div class="col-lg-10 col-lg-offset-1">
+                    <h1 class="text-center">All Beers</h1>
                     <h2 class="text-center"><small>
-                        Below is a summary of the top 10 beers based on the mL of alcohol per dollar.
+                        Below is a listing of every beer on the beer store website sorted based on mL of alcohol per dollar.
                         </small></h2><br>
-                    <div class="ct-chart ct-bar" id="chart1" style="font-size: 500%"></div>
                 </div>
             </div>
             <div class="row">
                 <div class="col-lg-10 col-lg-offset-1">
-                    <table class="table table-striped table-hover table-bordered" id="table1">
+                    <table class="table table-hover table-striped table-bordered" id="table1">
                         <thread>
                             <tr>
                                 <th>Beer</th>
@@ -79,7 +78,7 @@
                                 <th>Size (mL)</th>
                                 <th>Alcohol (%)</th>
                                 <th>Price</th>
-                                <th>Value (mL alc/$)</th>
+                                <th>Value (mL alc./$)</th>
                             </tr>
                         </thread>
                     </table>
@@ -89,8 +88,7 @@
         </div><!-- /.container -->
 
 
-        <!-- Bootstrap core JavaScript
-================================================== -->
+        <!-- Bootstrap core JavaScript ================================================== -->
         <!-- Placed at the end of the document so the pages load faster -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
         <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
@@ -106,33 +104,23 @@
             var names = [];
 
             $.getJSON('https://raw.githubusercontent.com/simonsben/MyBeer/master/combined/jsonOut.txt', function(jsonData) {
-                var alcs = [], tableContents = [];
-                for(i=0;i<10;i++) {
-                    names.push(jsonData[i].name);
-                    valueAlc.push(jsonData[i].valueAlcohol);
-                }
-                min = valueAlc[9] - (valueAlc[0]-valueAlc[9]) * 0.15;
-
-                var data = {
-                    labels: names,
-                    series: [valueAlc]
-                };
-
-                var options = {
-                    fullWidth: true,
-                    fullHeight: true,
-                    low: min,
-                    height: 300+'px',
-                    style: 'stroke-width: 50px',
-                    chartPadding: {
-                        bottom: 50
-                    }
-                };
-                new Chartist.Bar('#chart1', data, options);
+                var dollar, tableContents = [];
+                
                 tableContents.push('<tbody>');
-                $.each(valueAlc, function(i, brews) {
-                    tableContents.push('<tr><th>'+jsonData[i].name+'</th><th>'+jsonData[i].type+'</th><th class="text-right">'+jsonData[i].quantity+'</th><th class="text-right">'+jsonData[i].size+' mL</th><th class="text-right">'+jsonData[i].alcohol.toFixed(1)+' %</th><th class="text-right">$ '+jsonData[i].price.toFixed(2)+'</th><th class="text-right">'+jsonData[i].valueAlcohol.toFixed(3)+' mL/$</th></tr>');
+                $.each(jsonData, function(i, brews) {
+                    var row;
+                    if(jsonData[i].sale == 1) {
+                        row = '<tr class="success">';
+                    }
+                    else {
+                        row = '<tr>';
+                    }
+                    //Looks shitty but should be faster than individual += statements...
+                    row += '<th>'+jsonData[i].name+'</th><th>'+jsonData[i].type+'</th><th class="text-right">'+jsonData[i].quantity+'</th><th class="text-right">'+jsonData[i].size+' mL</th><th class="text-right">'+jsonData[i].alcohol.toFixed(1)+' %</th><th class="text-right">'+jsonData[i].price.toFixed(2)+' $</th><th class="text-right">'+jsonData[i].valueAlcohol.toFixed(3)+' mL/$</th></tr>';
+                    
+                    tableContents.push(row);
                 })
+                tableContents.push('</tbody>');
                 $('#table1 tr:last').after(tableContents)
             })
         </script>

@@ -52,6 +52,7 @@
                         <li><a href="landing.html">Home</a></li>
                         <li><a href="topTen.html">Top 10</a></li>
                         <li class="active"><a href="#">All Beers</a></li>
+                        <li><a href="onSale.html">On Sale</a></li>
                     </ul>
                 </div><!--/.nav-collapse -->
             </div>
@@ -62,7 +63,7 @@
                 <div class="col-lg-10 col-lg-offset-1">
                     <h1 class="text-center">All Beers</h1>
                     <h2 class="text-center"><small>
-                        Below is a listing of every beer on the beer store website sotorted based on mL of alcohol per dollar.
+                        Below is a listing of every beer on the beer store website sorted based on mL of alcohol per dollar.
                         </small></h2><br>
                 </div>
             </div>
@@ -72,12 +73,12 @@
                         <thread>
                             <tr>
                                 <th>Beer</th>
-                                <th>Brewer</th>
+                                <th>Type</th>
                                 <th>Quantity</th>
                                 <th>Size (mL)</th>
-                                <th>Type</th>
+                                <th>Alcohol (%)</th>
                                 <th>Price</th>
-                                <th>Value (mL alc./$)</th>
+                                <th>Value (mL alc/$)</th>
                             </tr>
                         </thread>
                     </table>
@@ -87,8 +88,7 @@
         </div><!-- /.container -->
 
 
-        <!-- Bootstrap core JavaScript
-================================================== -->
+        <!-- Bootstrap core JavaScript ================================================== -->
         <!-- Placed at the end of the document so the pages load faster -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
         <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
@@ -108,13 +108,17 @@
                 
                 tableContents.push('<tbody>');
                 $.each(jsonData, function(i, brews) {
+                    var row;
                     if(jsonData[i].sale == 1) {
-                        tableContents.push('<tr class="success"><th>'+jsonData[i].name+'</th><th>'+jsonData[i].brand+'</th><th class="text-right">'+jsonData[i].quantity+'</th><th class="text-right">'+jsonData[i].size+' mL</th><th>'+jsonData[i].type+'</th><th class="text-right">'+jsonData[i].price.toFixed(2)+' $</th><th class="text-right">'+jsonData[i].valueAlcohol.toFixed(3)+' mL/$</th></tr>');
-                        console.log('sale flagged.')
+                        row = '<tr class="success">';
                     }
                     else {
-                        tableContents.push('<tr><th>'+jsonData[i].name+'</th><th>'+jsonData[i].brand+'</th><th class="text-right">'+jsonData[i].quantity+'</th><th class="text-right">'+jsonData[i].size+' mL</th><th>'+jsonData[i].type+'</th><th class="text-right">'+jsonData[i].price.toFixed(2)+' $</th><th class="text-right">'+jsonData[i].valueAlcohol.toFixed(3)+' mL/$</th></tr>');
+                        row = '<tr>';
                     }
+                    //Looks shitty but should be faster than individual += statements...
+                    row += '<th>'+jsonData[i].name+'</th><th>'+jsonData[i].type+'</th><th class="text-right">'+jsonData[i].quantity+'</th><th class="text-right">'+jsonData[i].size+' mL</th><th class="text-right">'+jsonData[i].alcohol.toFixed(1)+' %</th><th class="text-right">$ '+jsonData[i].price.toFixed(2)+'</th><th class="text-right">'+jsonData[i].valueAlcohol.toFixed(3)+' mL/$</th></tr>';
+                    
+                    tableContents.push(row);
                 })
                 tableContents.push('</tbody>');
                 $('#table1 tr:last').after(tableContents)
