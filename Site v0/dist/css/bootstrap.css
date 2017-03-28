@@ -2260,6 +2260,9 @@ caption {
 th {
   text-align: left;
 }
+th-small {
+	.hidden-xs;
+}
 .table {
   width: 100%;
   max-width: 100%;
