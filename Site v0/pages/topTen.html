@@ -105,13 +105,13 @@
             var valueAlc = [], i, min;
             var names = [];
 
-            $.getJSON('https://raw.githubusercontent.com/simonsben/MyBeer/master/combined/jsonOut.txt', function(jsonData) {
+            $.getJSON('https://raw.githubusercontent.com/simonsben/MyBeer/master/combined/top10jsonData.txt', function(jsonData) {
                 var alcs = [], tableContents = [];
-                for(i=0;i<10;i++) {
+                for(i=0;i<jsonData.length;i++) {
                     names.push(jsonData[i].name);
                     valueAlc.push(jsonData[i].valueAlcohol);
                 }
-                min = valueAlc[9] - (valueAlc[0]-valueAlc[9]) * 0.15;
+                min = valueAlc[valueAlc.length-1] - (valueAlc[0]-valueAlc[valueAlc.length-1]) * 0.15;
 
                 var data = {
                     labels: names,
