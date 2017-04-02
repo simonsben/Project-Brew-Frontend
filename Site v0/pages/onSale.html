@@ -9,7 +9,7 @@
         <meta name="author" content="">
         <link rel="icon" href="../favicon.ico">
 
-        <title>Starter Template for Bootstrap</title>
+        <title>Beers on sale</title>
 
         <!-- Bootstrap core CSS -->
         <link href="../dist/css/bootstrap.min.css" rel="stylesheet">
@@ -103,16 +103,14 @@
             var valueAlc = [], i, min;
             var names = [];
 
-            $.getJSON('https://github.com/simonsben/MyBeer/blob/master/combined/jsonAllData.txt?raw=true', function(jsonData) {
+            $.getJSON('https://raw.githubusercontent.com/simonsben/MyBeer/master/combined/jsonSaleData.txt', function(jsonData) {
                 var dollar, tableContents = [];
                 
                 tableContents.push('<tbody>');
                 $.each(jsonData, function(i, brews) {
-                    if(jsonData[i].sale == 1) {
-                        row = '<tr><th>'+jsonData[i].name+'</th><th>'+jsonData[i].type+'</th><th class="text-right">'+jsonData[i].quantity+'</th><th class="text-right">'+jsonData[i].size+' mL</th><th class="text-right">'+jsonData[i].alcohol.toFixed(1)+' %</th><th class="text-right">$ '+jsonData[i].price.toFixed(2)+'</th><th class="text-right">'+jsonData[i].valueAlcohol.toFixed(3)+' mL/$</th></tr>';
+                    row = '<tr><th>'+jsonData[i].name+'</th><th>'+jsonData[i].type+'</th><th class="text-right">'+jsonData[i].quantity+'</th><th class="text-right">'+jsonData[i].size+' mL</th><th class="text-right">'+jsonData[i].alcohol.toFixed(1)+' %</th><th class="text-right">$ '+jsonData[i].price.toFixed(2)+'</th><th class="text-right">'+jsonData[i].valueAlcohol.toFixed(3)+' mL/$</th></tr>';
 
-                        tableContents.push(row);
-                    }
+                    tableContents.push(row);
                 })
                 tableContents.push('</tbody>');
                 $('#table1 tr:last').after(tableContents)
