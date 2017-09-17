@@ -9,7 +9,7 @@
         <meta name="author" content="">
         <link rel="icon" href="../favicon.ico">
 
-        <title>Starter Template for Bootstrap</title>
+        <title>All Beers</title>
 
         <!-- Bootstrap core CSS -->
         <link href="../dist/css/bootstrap.min.css" rel="stylesheet">
@@ -52,8 +52,8 @@
                         <li><a href="landing.html">Home</a></li>
                         <li><a href="topTen.html">Top 10</a></li>
                         <li><a href="allBeers.html">All Beers</a></li>
-                        <li class="active"><a href="#">On Sale</a></li>
-                        <li><a href="kegsOnly.html">Kegs</a></li>
+                        <li><a href="onSale.html">On Sale</a></li>
+                        <li class="active"><a href="#">Kegs</a></li>
                     </ul>
                 </div><!--/.nav-collapse -->
             </div>
@@ -62,9 +62,9 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-10 col-lg-offset-1">
-                    <h1 class="text-center">All Beers On Sale</h1>
+                    <h1 class="text-center">All Beers</h1>
                     <h2 class="text-center"><small>
-                        Below is a listing of every beer on sale at The Beer Store sorted based on mL of alcohol per dollar.
+                        Below is a listing of all of the kegs on The Beer Store website sorted based on mL of beer per dollar.
                         </small></h2><br>
                 </div>
             </div>
@@ -75,12 +75,12 @@
                             <tr>
                                 <th>Beer</th>
                                 <th>Type</th>
+                                <th>Quantity</th>
                                 <th>Size (mL)</th>
                                 <th>Alcohol (%)</th>
-                                <th>Price ($)</th>
-                                <th>Value (mL alc/$)</th>
-                                <th>Sale</th>
-                                <th>More info</th>
+                                <th>Price</th>
+                                <th>Value (mL/$)</th>
+                                <th>More</th>
                             </tr>
                         </thread>
                     </table>
@@ -123,24 +123,35 @@
             var valueAlc = [], i, min;
             var names = [];
 
-            $.getJSON('https://raw.githubusercontent.com/simonsben/MyBeer/master/data/jsonSaleData.txt', function(jsonData) {
+            $.getJSON('https://raw.githubusercontent.com/simonsben/MyBeer/master/data/jsonKegData.txt', function(jsonData) {
                 var dollar, tableContents = [];
                 
                 tableContents.push('<tbody>');
                 $.each(jsonData, function(i, brews) {
-                    if(jsonData[i].sale == 1) {
-                        row = '<tr><th>'+jsonData[i].name+'</th><th>'+jsonData[i].type+'</th><th class="text-right">'+jsonData[i].size+' mL</th><th class="text-right">'+jsonData[i].alcohol.toFixed(1)+' %</th><th class="text-right">$ '+jsonData[i].price.toFixed(2)+'</th><th class="text-right">'+jsonData[i].valueAlcohol.toFixed(3)+' mL/$</th><th class="text-right">'+jsonData[i].salePercent.toFixed(1)+' %</th><th class="text-center"><button class="btn btn-default" onclick="modalOnClick('+jsonData[i].rank+')">Info</button></th></tr>';
-
-                        tableContents.push(row);
+                    var row;
+                    if(jsonData[i].type != "Keg") {
+                        return;
                     }
+                    if(jsonData[i].sale == 1) {
+                        row = '<tr class="success">';
+                    }
+                    else {
+                        row = '<tr>';
+                    }
+                    //Looks shitty but should be faster than individual += statements...
+                    row += '<th>'+jsonData[i].name+'</th><th>'+jsonData[i].type+'</th><th class="text-right">'+jsonData[i].quantity+'</th><th class="text-right">'+jsonData[i].size+' mL</th><th class="text-right">'+jsonData[i].alcohol.toFixed(1)+' %</th><th class="text-right">'+jsonData[i].price.toFixed(2)+' $</th><th class="text-right">'+jsonData[i].value.toFixed(3)+' mL/$</th>'
+                    
+                    row += '<th class="text-center"><button class="btn btn-default" onclick="modalOnClick('+jsonData[i].rank+')">Info</button></th></tr>'
+                    
+                    tableContents.push(row);
                 })
                 tableContents.push('</tbody>');
-                $('#table1 tr:last').after(tableContents)
+                $('#table1 tr:last').after(tableContents);
             })
         </script>
         <script>
             function modalOnClick(rank) {
-                $.getJSON('https://raw.githubusercontent.com/simonsben/MyBeer/master/data/jsonSaleData.txt', function(jsonData) {
+                $.getJSON('https://raw.githubusercontent.com/simonsben/MyBeer/master/data/jsonKegData.txt', function(jsonData) {
                     var content;
                     $('#beerTitle').replaceWith('<h4 class="modal-title text-center" id="beerTitle">'+jsonData[rank].name+'</h4>');
                     content = '<div class="col-md-6" id="beerInfo">';

@@ -53,6 +53,7 @@
                         <li><a href="topTen.html">Top 10</a></li>
                         <li class="active"><a href="#">All Beers</a></li>
                         <li><a href="onSale.html">On Sale</a></li>
+                        <li><a href="kegsOnly.html">Kegs</a></li>
                     </ul>
                 </div><!--/.nav-collapse -->
             </div>
@@ -103,7 +104,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> <!-- End of Modal ===================================================== -->
         </div><!-- /.container -->
 
 
@@ -122,7 +123,7 @@
             var valueAlc = [], i, min;
             var names = [];
 
-            $.getJSON('https://raw.githubusercontent.com/simonsben/MyBeer/master/combined/jsonAllData.txt', function(jsonData) {
+            $.getJSON('https://raw.githubusercontent.com/simonsben/MyBeer/master/data/jsonAllData.txt', function(jsonData) {
                 var dollar, tableContents = [];
                 
                 tableContents.push('<tbody>');
@@ -137,7 +138,8 @@
                     //Looks shitty but should be faster than individual += statements...
                     row += '<th>'+jsonData[i].name+'</th><th>'+jsonData[i].type+'</th><th class="text-right">'+jsonData[i].quantity+'</th><th class="text-right">'+jsonData[i].size+' mL</th><th class="text-right">'+jsonData[i].alcohol.toFixed(1)+' %</th><th class="text-right">'+jsonData[i].price.toFixed(2)+' $</th><th class="text-right">'+jsonData[i].valueAlcohol.toFixed(3)+' mL/$</th>'
                     
-                    row += '<th class="text-center"><button class="btn btn-default" onclick="modalOnClick('+jsonData[i].rank+')">Info</button></th></tr>'
+                    row += '<th class="text-center"> <button class="btn btn-default" onclick="modalOnClick('+jsonData[i].rank+')">Info</button></th></tr>'
+                    console.log(jsonData[i].rank + ' ' + i)
                     
                     tableContents.push(row);
                 })
@@ -147,7 +149,7 @@
         </script>
         <script>
             function modalOnClick(rank) {
-                $.getJSON('https://raw.githubusercontent.com/simonsben/MyBeer/master/combined/jsonAllData.txt', function(jsonData) {
+                $.getJSON('https://raw.githubusercontent.com/simonsben/MyBeer/master/data/jsonAllData.txt', function(jsonData) {
                     var content;
                     $('#beerTitle').replaceWith('<h4 class="modal-title text-center" id="beerTitle">'+jsonData[rank].name+'</h4>');
                     content = '<div class="col-md-6" id="beerInfo">';
