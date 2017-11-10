@@ -141,12 +141,12 @@
             var valueAlc = [], i, min;
             var names = [];
 
-            $.getJSON('https://raw.githubusercontent.com/simonsben/MyBeer/brewcentric/data/jsonAllData.json', function(jsonData) {
+            $.getJSON('../data/jsonAllData.json', function(jsonData) {
                 var dollar, tableContents = [];
                 
                 tableContents.push('<tbody>');
                 $.each(jsonData, function(i, brew) {
-                    var row, main;
+                    var row, main, prc;
                     main = brew.main
                     if(brew.isSale == 1) {
                         row = '<tr class="success table-inner">';
@@ -166,7 +166,7 @@
         </script>
         <script>
             function modalOnClick(rank) {
-                $.getJSON('https://raw.githubusercontent.com/simonsben/MyBeer/brewcentric/data/jsonAllData.json', function(jsonData) {
+                $.getJSON('../data/jsonAllData.json', function(jsonData) {
                     var content, price, toPageButt;
                     $('#beerTitle').replaceWith('<h4 class="modal-title text-center" id="beerTitle">'+jsonData[rank].name+'</h4>');
                     content = '<div class="col-md-7" id="beerInfo"><b>Brewer: </b>'+jsonData[rank].brand+'</br><b>Brew: </b>'+jsonData[rank].name+'</br><b>Alcohol Content: </b>'+jsonData[rank].alcohol.toFixed(1)+' %</br><b>Rank: </b>'+(jsonData[rank].rank+1)+'</p>';
@@ -190,9 +190,9 @@
                     picture = '<div class="col-md-5" id="beerPic"><img src="'+jsonData[rank].pictureLink+'" class="img-responsive rounded center-block"></div>'
                     
                     
+                    $('#toPage').replaceWith('<a href="'+jsonData[rank].pageLink+'" id="toPage" class="btn btn-info">Go to The Beer Store</a>')
                     $('#beerInfo').replaceWith(content);
                     $('#beerPic').replaceWith(picture)
-                    $('#toPage').replaceWith('<a href="'+jsonData[rank].pageLink+'" class="btn btn-info">Go to The Beer Store</a>')
                     $('#modal').modal('show');
                 })
             }

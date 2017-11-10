@@ -111,21 +111,22 @@
         <script src="../dist/chartist/chartist-plugin-axistitle.min.js"></script>
 
 
-        <script>
-            var valueAlc = [], i, min;
-            var names = [];
-
-            $.getJSON('https://raw.githubusercontent.com/simonsben/MyBeer/master/data/top10jsonData.txt', function(jsonData) {
-                var alcs = [], tableContents = [];
-                for(i=0;i<jsonData.length;i++) {
+        <script>            
+            $.getJSON('../data/top10jsonData.json', function(jsonData) {
+                var alcs = [], tableContents = [], names = [], chrtData = [];
+                var min, i;
+                
+                for(i=0;i<10;i++) {
                     names.push(jsonData[i].name);
-                    valueAlc.push(jsonData[i].valueAlcohol);
+                    chrtData.push(jsonData[i].valAlc);
                 }
-                min = valueAlc[valueAlc.length-1] - (valueAlc[0]-valueAlc[valueAlc.length-1]) * 0.15;
+                min = chrtData[chrtData.length-1] - (chrtData[0]-chrtData[chrtData.length-1]) * 0.15;
 
+                console.log(names);
+                console.log(chrtData);
                 var data = {
                     labels: names,
-                    series: [valueAlc]
+                    series: [chrtData]
                 };
 
                 var options = {
@@ -140,8 +141,8 @@
                 };
                 new Chartist.Bar('#chart1', data, options);
                 tableContents.push('<tbody>');
-                $.each(valueAlc, function(i, brews) {
-                    tableContents.push('<tr class="table-inner"><th>'+jsonData[i].name+'</th><th>'+jsonData[i].type+'</th><th class="text-right">'+jsonData[i].quantity+'</th><th class="text-right">'+jsonData[i].size+' mL</th><th class="text-right">'+jsonData[i].alcohol.toFixed(1)+' %</th><th class="text-right">$ '+jsonData[i].price.toFixed(2)+'</th><th class="text-right">'+jsonData[i].valueAlcohol.toFixed(3)+' mL/$</th></tr>');
+                $.each(jsonData, function(i, brews) {
+                    tableContents.push('<tr class="table-inner"><th>'+brews.name+'</th><th>'+brews.info[brews.main][0]+'</th><th class="text-right">'+brews.info[brews.main][2]+'</th><th class="text-right">'+brews.info[brews.main][1]+' mL</th><th class="text-right">'+brews.alcohol.toFixed(1)+' %</th><th class="text-right">$ '+brews.price.toFixed(2)+'</th><th class="text-right">'+brews.valAlc.toFixed(3)+' mL/$</th></tr>');
                 })
                 $('#table1 tr:last').after(tableContents)
             })
