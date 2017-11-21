@@ -18,22 +18,20 @@
 
         <title>Kegs</title>
 
-        <!-- Bootstrap core CSS -->
-        <link href="../dist/css/bootstrap.min.css" rel="stylesheet">
+        <!-- Bootstrap core CSS 
+        <link href="../dist/css/bootstrap.min.css" rel="stylesheet"> -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+        <!-- IE10 viewport hack for Surface/desktop Windows 8 bug 
+        <link href="../assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet"> -->
 
-        <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-        <link href="../assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
+        <!-- Custom styles for this template 
+        <link href="../dist/css/starter-template.css" rel="stylesheet"> -->
 
-        <!-- Custom styles for this template -->
-        <link href="../dist/css/starter-template.css" rel="stylesheet">
-
-        <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
-        <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
-        <script src="../assets/js/ie-emulation-modes-warning.js"></script>
+        <!-- Just for debugging purposes. Don't actually copy these 2 lines! 
+        <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]
+        <script src="../assets/js/ie-emulation-modes-warning.js"></script> -->
 
         <!-- Including chartist style sheet -->
-        <link rel="stylesheet" href="../dist/chartist/chartist.min.css">
-
         <link rel="stylesheet" href="../dist/css/custom.css">
         
         <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -44,7 +42,7 @@
     </head>
 
     <body>
-
+        <!--
         <nav class="navbar navbar-inverse navbar-fixed-top">
             <div class="container">
                 <div class="navbar-header">
@@ -64,22 +62,48 @@
                         <li><a href="onSale.html">On Sale</a></li>
                         <li class="active"><a href="#">Kegs</a></li>
                     </ul>
-                </div><!--/.nav-collapse -->
+                </div><!--/.nav-collapse 
             </div>
+        </nav> -->
+        <nav class="navbar navbar-toggleable-md navbar-light bg-faded">
+          <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <a class="navbar-brand" href="landing.html">Project Brew</a>
+
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+              <li class="nav-item">
+                <a class="nav-link" href="landing.html">Home<span class="sr-only">(current)</span></a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="topTen.html">Top 10</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="allBeers.html">All Beers</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="onSale.html">On Sale</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" href="kegsOnly.html">Kegs</a>
+              </li>
+            </ul>
+          </div>
         </nav>
 
         <div class="container">
             <div class="row">
-                <div class="col-lg-10 col-lg-offset-1">
-                    <h1 class="text-center">All Kegs</h1>
-                    <h2 class="text-center"><small>
+                <div class="col-lg-10 offset-lg-1">
+                    <h1 class="text-center display-4">All Kegs</h1>
+                    <h2 class="text-center text-muted"><small style="font-size: 75%">
                         Below is a listing of all of the kegs on The Beer Store website sorted based on mL of beer per dollar.
                         </small></h2><br>
                 </div>
             </div>
             <div class="row">
-                <div class="col-lg-10 col-lg-offset-1">
-                    <table class="table table-hover table-striped table-bordered" id="table1">
+                <div class="col-lg-10 offset-lg-1">
+                    <table class="table table-responsive table-hover table-striped table-bordered" id="table1">
                         <thread>
                             <tr>
                                 <th>Beer</th>
@@ -102,20 +126,21 @@
                         <div class="modal-header">
                             <h4 class="modal-title" id="beerTitle"></h4>
                         </div>
+                        
                         <div class="modal-body" id="beerInfo1">
                             <div class="row">
-                                <div class="col-md-5 col-md-offset-1" id="beerInfo"></div>
+                                <div class="col-md-5 offset-md-1" id="beerInfo"></div>
                                 <div class="col-md-5" id="beerPic"></div>
                             </div>
                         </div>    
+                        <!--==== Modal footer ====-->
                         <div class="modal-footer">
-                            <div class="row">
-                                <div class="col-md-4"></div>
-                                <div class="col-md-4 text-center">
-                                    <a href="#" class="btn btn-info" id="toPage">Go to The Beer Store</a>
+                            <div class="row justify-content-md-center">
+                                <div class="col-md">
+                                    <input type="button" class="btn btn-link" id="toPage" value="Go to The Beer Store" onclick="window.open('http://google.ca')">
                                 </div>
-                                <div class="col-md-4">
-                                    <button type="button" class="btn btn-danger btn-sm" data-dismiss="modal">Close</button>
+                                <div class="col-md">
+                                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
                                 </div>
                             </div>
                         </div>
@@ -127,40 +152,45 @@
 
         <!-- Bootstrap core JavaScript ================================================== -->
         <!-- Placed at the end of the document so the pages load faster -->
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-        <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
-        <script src="../dist/js/bootstrap.min.js"></script>
-        <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-        <script src="../assets/js/ie10-viewport-bug-workaround.js"></script>
+        <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+        
+        <!-- IE10 viewport hack for Surface/desktop Windows 8 bug 
+        <script src="../assets/js/ie10-viewport-bug-workaround.js"></script> -->
         <script src="../dist/chartist/chartist.min.js"></script>
         <script src="../dist/chartist/chartist-plugin-axistitle.min.js"></script>
 
         <script>
-            var valueAlc = [], i, min;
-            var names = [];
+            if(jQuery) {
+                $(document).ready(function() {
+                    var valueAlc = [], i, min;
+                    var names = [];
 
-            $.getJSON('../data/jsonKegData.json', function(jsonData) {
-                var dollar, tableContents = [];
+                    $.get('../data/jsonKegData.json', function(jsonData) {
+                        var dollar, tableContents = [];
 
-                tableContents.push('<tbody>');
-                $.each(jsonData, function(i, brew) {
-                    var row, main;
-                    main = brew.main
-                    if(brew.isSale == 1) {
-                        row = '<tr class="success table-inner">';
-                    }
-                    else {
-                        row = '<tr class="table-inner">';
-                    }
-                    //Looks shitty but should be faster than individual += statements...
-                    //Info format: Type (0), size(1), quantity(2), price(3), sale(4), sale price(5), sale percent(6), value(7), alc value(8)
-                    row += '<th>'+brew.name+'</th><th>'+brew.info[main][0]+'</th><th class="tb-num">'+brew.info[main][2]+'</th><th class="tb-num">'+brew.info[main][1]+' mL</th><th class="tb-num">'+brew.alcohol.toFixed(1)+' %</th><th class="tb-num">'+brew.price.toFixed(2)+' $</th><th class="tb-num">'+brew.value.toFixed(3)+' mL/$</th><th class="text-center"> <button class="btn btn-info" onclick="modalOnClick('+brew.rank+')">Info</button></th></tr>'
-                    
-                    tableContents.push(row);
+                        tableContents.push('<tbody>');
+                        $.each(jsonData, function(i, brew) {
+                            var row, main;
+                            main = brew.main
+                            if(brew.isSale == 1) {
+                                row = '<tr class="success table-inner">';
+                            }
+                            else {
+                                row = '<tr class="table-inner">';
+                            }
+                            //Looks shitty but should be faster than individual += statements...
+                            //Info format: Type (0), size(1), quantity(2), price(3), sale(4), sale price(5), sale percent(6), value(7), alc value(8)
+                            row += '<th>'+brew.name+'</th><th>'+brew.info[main][0]+'</th><th class="tb-num">'+brew.info[main][2]+'</th><th class="tb-num">'+brew.info[main][1]+' mL</th><th class="tb-num">'+brew.alcohol.toFixed(1)+' %</th><th class="tb-num">'+brew.price.toFixed(2)+' $</th><th class="tb-num">'+brew.value.toFixed(3)+' mL/$</th><th class="text-center"> <button class="btn btn-info" onclick="modalOnClick('+brew.rank+')">Info</button></th></tr>'
+
+                            tableContents.push(row);
+                        })
+                        tableContents.push('</tbody>');
+                        $('#table1 tr:last').after(tableContents);
+                    }, 'json')
                 })
-                tableContents.push('</tbody>');
-                $('#table1 tr:last').after(tableContents);
-            })
+            }
         </script>
         <script>
             function modalOnClick(rank) {
@@ -185,12 +215,16 @@
                         
                     content += '</table><p><i>NOTE: Price given in CAD, Size in mL, value in mL per $, and alc. value in mL of alcohol per  $</i></p></div>';
                     
-                    picture = '<div class="col-md-5" id="beerPic"><img src="'+jsonData[rank].pictureLink+'" class="img-responsive rounded center-block"></div>'
+                    picture = '<div class="col-md-5" id="beerPic"><img src="'+jsonData[rank].pictureLink+'" class="img-fluid rounded center-block"></div>'
                     
+                    beerLink = "'"+jsonData[rank].pageLink+"'";
                     
                     $('#beerInfo').replaceWith(content);
-                    $('#beerPic').replaceWith(picture)
-                    $('#toPage').replaceWith('<a href="'+jsonData[rank].pageLink+'" id="toPage" class="btn btn-info">Go to The Beer Store</a>')
+                    $('#beerPic').replaceWith(picture);
+                    //$('#toPage').replaceWith('<a href="'+jsonData[rank].pageLink+'" id="toPage" class="btn btn-info">Go to The Beer Store</a>')
+                    console.log(beerLink);
+                    
+                    $('#toPage').replaceWith('<input type="button" class="btn btn-secondary" id="toPage" value="Go to The Beer Store" onclick="window.open('+beerLink+')">');
                     $('#modal').modal('show');
                 })
             }
