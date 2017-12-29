@@ -24,17 +24,83 @@
                 <input type="button" class="btn btn-primary" onclick="window.open('http://google.ca')" value="Click me instead '\'">
             </div>
         </div>  
+        <br><br>
+        <div class="row">
+            <div class="col-8 offset-4">
+                <button onclick="save()" type="button" class="btn btn-info">Save</button>
+                <button onclick="getData()" type="button" class="btn btn-info">Get</button>
+            </div>
+        </div>
     </div>
       
+    <script>
+        function save()  {
+            $.get('https://raw.githubusercontent.com/simonsben/MyBeer/master/data/jsonSaleData.json', function(data) {
+                window.localStorage.setItem('Data', data);
+                var dt = new Date();
+                dt.setDate(15);
+                console.log($.now())
+                window.localStorage.setItem('DT', dt.getTime());
+            })
+            //var bit = ['cool', 'cats', 'are', 'pretty', 'chill', 'lmao'];
+            //window.localStorage.setItem('Bit', bit);
+        }
+        function getData() {
+            var val = window.localStorage.getItem('Data');
+            val = jQuery.parseJSON(val);
+            /*
+            $.each(val, function(i, x) {
+                console.log(x);
+            }) */
+            
+            checkData();
+        }
+    </script>
+      
+    <script>
+        function checkData() {
+            var dateTime = new Date(parseInt(window.localStorage.getItem('DT')));
+            if(isNaN(dateTime))  {
+                console.log('No data.');
+                return;
+            }
+            var datDay = dateTime.getDate(), datHour = dateTime.getHours();
+            var currDate = (new Date($.now())).getDate();
+            if(currDate == datDay && datHour >= 7) {
+                console.log('Good data.');
+            } else {
+                console.log('Old data.');
+            }
+        }
+    </script>
+    <script>
+        if(jQuery) {
+            $(document).ready(function() {
+                var a = [1, 4, 3];
+                var b = [4, 5, 6];
+                console.log(contain(b, a));
+            });
+        }
+    </script>
+    <script>
+        function contain(chunk, bit) {
+            var ch =  false;
+            $.each(bit, function(i, a) {
+                if(chunk.includes(a)) {ch = true; return false;}
+            });
+            return ch;
+        }
+    </script>
       
     <script>
         if(jQuery) {
             $(document).ready(function() {
-                console.log('Test??')
-                
-                $.getJSON('https://raw.githubusercontent.com/simonsben/MyBeer/master/data/jsonSaleData.json', function(data) {
-                    console.log('test');
-                });
+                var a = 'There was an, old, farmer who sat on a rock';
+                console.log(a.replace(',', ''));
+                console.log(a.split(''))
+                console.log($.now())
+                console.log((new Date($.now())).getHours())
+                console.log((new Date($.now())).getMinutes())
             });
         }
     </script>
