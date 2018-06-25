@@ -1,0 +1,9 @@
+@import './style/fonts.css';
+
+.container {
+  background-color: var(--orange);
+  height: 100%;
+  min-height: 100%;
+  /* display: flex !important; */
+  flex-direction: column;
+}

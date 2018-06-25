@@ -1,0 +1,37 @@
+@import '../../style/color.css';
+
+.nav {
+    display: flex;
+    align-items: center;
+    background-color: var(--orange);
+    height: 3.25em;
+    border-bottom: solid black;
+    border-radius: 2px;
+}
+
+.nav_main {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: rgba(0, 0, 0, .8);
+    padding: 1rem;
+    user-select: none;
+}
+
+.nav_main:hover {
+    color: black;
+    font-weight: 800;
+}
+
+.nav_item {
+    color: black;
+    font-size: 1.1rem;
+    padding: 1.1rem;
+    user-select: none;
+    border-radius: 3px;
+}
+
+.nav_item:hover {
+    color: white;
+    background-color: var(--orange_dark);
+}
+

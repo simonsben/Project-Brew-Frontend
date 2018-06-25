@@ -1,0 +1,41 @@
+.container {
+    
+}
+
+.brand_container {
+    width: 100%;
+    height: 16em;
+    background-color: var(--teal);
+    border-radius: 3px;
+    color: white;
+}
+
+.brand {
+    font-size: 3rem;
+    text-align: center;
+    padding-top: 3rem;
+}
+
+.brand_icon {
+    width: 3em;
+    margin-left: calc(50% - 1.5em);
+    margin-top: 1em;
+    opacity: .85;
+}
+
+.brand_content {
+    padding: 1rem 10% 0 10%;
+    text-align: center;
+    font-size: 1.2rem;
+    color: rgba(255, 255, 255, .7);
+}
+
+.content {
+    flex: 1;
+}
+
+.content_item {
+    width: 100%;
+    height: 10em;
+    background-color: var(--yellow);
+}
