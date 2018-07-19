@@ -45,4 +45,17 @@
     background-color: var(--yellow);
 
     margin: 2px 0 2px 0;
+    display: flex;
+    align-items: center;
+}
+
+.content_item.right {
+    justify-content: flex-end;
+}
+
+.inner_content {
+    align-items: center;
+    height: fit-content;
+    padding: 2rem;
+    font-weight: bold;
 }
