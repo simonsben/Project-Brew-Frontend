@@ -1,13 +1,16 @@
-.container {
-    
+.landing-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
 }
 
 .brand_container {
     width: 100%;
-    height: 16em;
+    height: fit-content;
     background-color: var(--teal);
     border-radius: 3px;
     color: white;
+    flex: 1;
 }
 
 .brand {
@@ -18,8 +21,7 @@
 
 .brand_icon {
     width: 3em;
-    margin-left: calc(50% - 1.5em);
-    margin-top: 1em;
+    margin: 1em 0 1em calc(50% - 1em); 
     opacity: .85;
 }
 
@@ -30,12 +32,17 @@
     color: rgba(255, 255, 255, .7);
 }
 
-.content {
+.landing_content {
     flex: 1;
+    display: flex;
+    flex-direction: column;
 }
 
 .content_item {
     width: 100%;
-    height: 10em;
+    min-height: 8rem;
+    flex: 1;
     background-color: var(--yellow);
+
+    margin: 2px 0 2px 0;
 }

@@ -1,10 +1,11 @@
 import React from 'react'
 import beer from '../../resources/beer.svg'
 import './landing.css'
+import { Content } from './Content';
 
 export const Landing = props => {
     return (
-        <div className='container'>
+        <div className='landing-container'>
             <div className='brand_container'>
                 <div className='brand header'>Welcome to project brew</div>
                 <div className='brand_content'>
@@ -14,11 +15,7 @@ export const Landing = props => {
                 </div>
                 <img className='brand_icon' src={beer}></img>
             </div>
-            <div className='content'>
-                <div className='content_item'>
-                    
-                </div>
-            </div>
+            <Content />
         </div>
     );
 }
