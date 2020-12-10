@@ -1,12 +1,15 @@
 import React from 'react';
 import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav'
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 
 const header_items = [
     { name: 'Home', route: '/' },
     { name: 'Top 10', route: '/top_10' },
-    { name: 'All Beers', route: '/all_beers' }
+    { name: 'All Beers', route: '/all_beers' },
+    { name: 'On Sale', route: '/on_sale' },
+    { name: 'Kegs', route: '/kegs' },
+    { name: 'search', route: '/search' },
 ]
 
 const Header = props => {
