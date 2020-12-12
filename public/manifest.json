@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "Project Brew",
+  "name": "Simple frontend to display the information collected as part of Project Brew",
   "icons": [
     {
       "src": "favicon.ico",
