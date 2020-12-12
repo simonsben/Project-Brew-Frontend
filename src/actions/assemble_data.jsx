@@ -1,12 +1,7 @@
-const { titleCase } = require('title-case');
-
-const lower_case = value => value.toLowerCase();
-const title_case = value => titleCase(lower_case(value));
 const make_rouder = num_digits => (
     number => number.toFixed(num_digits)
 );
 
-const name_format = value => title_case(value).replaceAll('-', ' ');
 const alcohol_format = value => (value * 100).toFixed(1);
     
 const passer = value => value;
@@ -14,7 +9,7 @@ const general_formatters = {
     price: make_rouder(2),
     alcohol_value: make_rouder(1),
     alcohol: alcohol_format,
-    // name: name_format
+    value: make_rouder(1)
 };
 
 const general_key_maps = {
@@ -50,10 +45,15 @@ const default_target = {
     is_numeric: true
 };
 
-const assemble_beer_info = (beers, target=default_target) => {
+const assemble_beer_info = (beers, target=default_target, to_remove=null) => {
     let key_maps = {...general_key_maps, [target['key']]: target};
-    let formatters = {...general_formatters}
+    if (to_remove !== null)
+        to_remove.forEach(key => {
+            if (key in key_maps)
+            delete key_maps[key];
+        })
 
+    let formatters = {...general_formatters};
     if ('formatter' in target)
         formatters[target['key']] = target['formatter'];
     
@@ -78,6 +78,6 @@ const assemble_beer_info = (beers, target=default_target) => {
 }
 
 
-module.exports = {
+export {
     assemble_beer_info
 }

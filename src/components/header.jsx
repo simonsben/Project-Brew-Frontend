@@ -1,23 +1,23 @@
 import React from 'react';
 import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav'
-// import { Link } from 'react-router-dom';
+import '../App.scss';
 
 const header_items = [
-    { name: 'Home', route: '/' },
+    // { name: 'Home', route: '/' },
     { name: 'Top 10', route: '/top_10' },
     { name: 'All Beers', route: '/all_beers' },
     { name: 'On Sale', route: '/on_sale' },
     { name: 'Kegs', route: '/kegs' },
-    { name: 'search', route: '/search' },
+    // { name: 'search', route: '/search' }
 ]
 
 const Header = props => {
 
     return (
         <Navbar bg="dark" variant="dark">
-            <Navbar.Brand href="#home">
-                <img src="assets/favicon-32x32.png" width="30" height="30" className="navbar_icon" />{' '}
+            <Navbar.Brand href="/">
+                <img src="assets/favicon-32x32.png" width="30" height="30" className="navbar_icon" alt='' />{' '}
                 Project Brew
             </Navbar.Brand>
             <Nav className="mr-auto">

@@ -23,3 +23,10 @@
 .non_numeric_cell {
     text-align: left;
 }
+
+.landing {
+    > div {
+        padding-top: 5rem;
+        padding-bottom: 5rem;
+    }
+}

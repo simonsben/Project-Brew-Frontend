@@ -24,6 +24,6 @@ const arg_max = (values, accessor=null, key=null) => {
 };
 
 
-module.exports = {
+export {
     arg_max
 };

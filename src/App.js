@@ -4,10 +4,12 @@ import { Switch, Route, BrowserRouter as Router } from 'react-router-dom'
 import Top10 from './pages/top_10';
 import Container from 'react-bootstrap/Container';
 import { get_beers } from './actions/get_data';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import './App.scss';
 import AllBeers from './pages/all_beers';
 import OnSale from './pages/on_sale';
+import Kegs from './pages/kegs';
+import Home from './pages/home';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import './App.scss';
 
 class App extends Component {
     constructor(props) {
@@ -51,8 +53,12 @@ class App extends Component {
                                 <OnSale beers={ beers } />
                             </Route>
 
+                            <Route path='/kegs'>
+                                <Kegs beers={ beers } />
+                            </Route>
+
                             <Route path="/">
-                                home tings
+                                <Home />
                             </Route>
                         </Switch>
                     </Container>
