@@ -8,13 +8,8 @@ class AdvTable extends Component {
     render() {
         const { header, data, is_numeric } = this.props;
 
-        console.log(header);
-        console.log(data);
-
         return (
             <Table responsive striped hover>
-                {/* <thread> */}
-                {/* </thread> */}
                 <tbody>
                     <tr>
                         {

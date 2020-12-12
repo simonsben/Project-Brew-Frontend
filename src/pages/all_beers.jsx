@@ -4,20 +4,19 @@ import Col from 'react-bootstrap/Col';
 import AdvTable from '../components/table';
 import { assemble_beer_info } from '../actions/assemble_data';
 
-const Top10 = props => {
+const AllBeers = props => {
     const { beers } = props;
-    const top_10 = beers.slice(0, 10);
-    const { header, beer_info, is_numeric } = assemble_beer_info(top_10);
+    const { header, beer_info, is_numeric } = assemble_beer_info(beers);
+
 
     return (
         <Fragment>
             <Row className='top_pad'>
                 <Col>
-                    <h1 className='display-4 center_text'>Top 10 beers</h1>
-                    <p className='lead larger center_text'>Below is a summary of the top 10 beers based on the mL of alcohol per dollar.</p>
+                    <h1 className='display-4 center_text'>Best value beers</h1>
+                    <p className='lead larger center_text'>Here is every beer sold at <a href='https://www.thebeerstore.ca/'>The Beer Store</a> ranked by the mL of alcohol per dollar.</p>
                 </Col>
             </Row>
-            {/* <Row>Graph is here.</Row> */}
             <Row>
                 <AdvTable header={ header } data={ beer_info } is_numeric={ is_numeric } />
             </Row>
@@ -25,4 +24,4 @@ const Top10 = props => {
     )
 }
 
-export default Top10;
+export default AllBeers;

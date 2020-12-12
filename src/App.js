@@ -6,6 +6,8 @@ import Container from 'react-bootstrap/Container';
 import { get_beers } from './actions/get_data';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.scss';
+import AllBeers from './pages/all_beers';
+import OnSale from './pages/on_sale';
 
 class App extends Component {
     constructor(props) {
@@ -40,10 +42,17 @@ class App extends Component {
                             <Route path="/top_10">
                                 <Top10 beers={ beers } />
                             </Route>
-                            <Route path="/contact">
+
+                            <Route path="/all_beers">
+                                <AllBeers beers={ beers } />
                             </Route>
+
+                            <Route path='/on_sale'>
+                                <OnSale beers={ beers } />
+                            </Route>
+
                             <Route path="/">
-                                home
+                                home tings
                             </Route>
                         </Switch>
                     </Container>

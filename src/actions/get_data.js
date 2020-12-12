@@ -12,6 +12,7 @@ const get_beers = () => {
     return new Promise((resolve, reject) => {
         // If data time exists and is the same as the current day, keep data.
         if (!!data_time && now.isSame(data_time, 'day')) {
+            console.log('date check', now.isSame(data_time, 'day'))
             const raw_data = localStorage.getItem('beer_data');
             console.log('Data is current, using cached.');
             
