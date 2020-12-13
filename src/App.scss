@@ -17,7 +17,7 @@
 
 
 .larger {
-    font-size: 1.5rem;
+    font-size: 1.5rem !important;
 }
 
 .numeric_cell {
@@ -33,4 +33,18 @@
         padding-top: 5rem;
         padding-bottom: 5rem;
     }
+}
+
+.home-right {
+    text-align: right;
+}
+
+@media screen and (max-width: 48em) {
+    .home-right {
+        text-align: left;
+    }
+}
+
+.table-header {
+    // position: fixed;
 }

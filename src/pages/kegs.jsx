@@ -32,7 +32,10 @@ const Kegs = props => {
             if (!has_kegs)
                 return null;
 
-            beer['main'] = arg_max(beer['containers'], keg_accessor)['max_index'];
+            beer = {
+                ...beer,
+                main: arg_max(beer['containers'], keg_accessor)['max_index']
+            };
             Object.keys(beer).forEach(key => {
                 const main_container = beer['containers'][beer['main']];
 

@@ -10,16 +10,16 @@ const header_items = [
     { name: 'On Sale', route: '/on_sale' },
     { name: 'Kegs', route: '/kegs' },
     // { name: 'search', route: '/search' }
-]
+];
 
 const Header = props => {
 
     return (
         <Navbar bg="dark" variant="dark">
-            <Navbar.Brand href="/">
+            <Link to='/' className='navbar-brand'>
                 <img src="/assets/favicon-32x32.png" width="30" height="30" className="navbar_icon" alt='' />{' '}
                 Project Brew
-            </Navbar.Brand>
+            </Link>
             <Nav className="mr-auto">
                 {
                     header_items.map(item => (
@@ -34,6 +34,6 @@ const Header = props => {
             </Nav>
         </Navbar>
     );
-}
+};
 
 export default Header;

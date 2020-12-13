@@ -25,8 +25,11 @@ const OnSale = props => {
             
             if (!has_sale)
                 return null;
-
-            beer['main'] = arg_max(beer['containers'], null, 'sale_percent')['max_index'];
+            
+            beer = {
+                ...beer,
+                main: arg_max(beer['containers'], null, 'sale_percent')['max_index']
+            }
             Object.keys(beer).forEach(key => {
                 const main_container = beer['containers'][beer['main']];
 

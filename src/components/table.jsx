@@ -19,7 +19,7 @@ class AdvTable extends Component {
         return (
             <Table responsive striped hover>
                 <tbody>
-                    <tr>
+                    <tr className='table-header'>
                         {
                             header.map((item, index) => (
                                 <th key={ index }>{ item }</th>

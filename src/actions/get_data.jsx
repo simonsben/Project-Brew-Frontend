@@ -16,7 +16,7 @@ const get_beers = () => {
         }
 
         console.log('Requesting fresh data.');
-        get('data/beers.json.gz', {responseType: 'arraybuffer'})
+        get('/data/beers.json.gz', {responseType: 'arraybuffer'})
             .then(({ data }) => {
                 const buffer = Buffer.from(data);
 

@@ -9,7 +9,7 @@ const Home = props => {
             <Row className='top_pad'>
                 <Col>
                     <h1 className='display-2 center_text'>Project Brew</h1>
-                    <p className='lead larger center_text'>The name of the game is information, and you need the best when it comes to your beer.</p>
+                    <p className='larger lead center_text'>The name of the game is information, and you need the best when it comes to your beer.</p>
                 </Col>
             </Row>
             <hr />
@@ -22,11 +22,11 @@ const Home = props => {
             </Row>
             <hr />
             <Row>
-                <Col className='text-right'>
-                    <p className='h1'>How can I trust this?</p>
+                <Col className='home-right'>
+                    <p className='h1'>Why should I trust this?</p>
                     <p className='lead'>
-                        There is no reason for me to lie to you, all I do is pay the server fees. <br/>
-                        The information is collected automatically every morning <a href='https://www.thebeerstore.ca/'>The Beer Store</a> and presented here.
+                        A beer's price isn't a matter of opinion, either it's cheap or it's not. <br />
+                        The information is updated automatically every morning from <a href='https://www.thebeerstore.ca/'>The Beer Store</a> website.
                     </p>
                 </Col>
             </Row>
