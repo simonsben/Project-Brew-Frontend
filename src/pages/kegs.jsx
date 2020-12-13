@@ -13,16 +13,26 @@ const value_target = {
     // formatter: value => (value * 100).toFixed(2)
 };
 
+const keg_accessor = container => {
+    if (container['container_type'] !== 'Keg')
+        return 0;
+    return container['value'];
+}
+
 
 const Kegs = props => {
-    const on_sale = props.beers
+    const beers = props.beers
         .map(beer => {
-            beer['containers'] = beer['containers'].filter(container => container['container_type'] === 'Keg');
+            let has_kegs = false;
+            beer['containers'].forEach(container => {
+                if (container['container_type'] === 'Keg')
+                    has_kegs = true;
+            });
             
-            if (beer['containers'].length <= 0)
+            if (!has_kegs)
                 return null;
 
-            beer['main'] = arg_max(beer['containers'], null, 'value')['max_index'];
+            beer['main'] = arg_max(beer['containers'], keg_accessor)['max_index'];
             Object.keys(beer).forEach(key => {
                 const main_container = beer['containers'][beer['main']];
 
@@ -41,11 +51,8 @@ const Kegs = props => {
         });
     
     
-
-    console.log(on_sale);
-
     const to_remove = ['quantity', 'container_type'];
-    const { header, beer_info, is_numeric } = assemble_beer_info(on_sale, value_target, to_remove);
+    const { header, beer_info, is_numeric } = assemble_beer_info({beers, target: value_target, to_remove});
 
     return (
         <Fragment>

@@ -45,7 +45,7 @@ const default_target = {
     is_numeric: true
 };
 
-const assemble_beer_info = (beers, target=default_target, to_remove=null) => {
+const assemble_beer_info = ({beers, target=default_target, to_remove=null}) => {
     let key_maps = {...general_key_maps, [target['key']]: target};
     if (to_remove !== null)
         to_remove.forEach(key => {
@@ -63,12 +63,12 @@ const assemble_beer_info = (beers, target=default_target, to_remove=null) => {
     const beer_info = beers.map(beer => {
         const beer_info = Object.keys(key_maps).map(key => {
             const formatter = key in formatters? formatters[key] : passer;
-    
-            if (key in beer)
-                return formatter(beer[key]);
-            
+
             const reference_index = beer['main'];
-            return formatter(beer['containers'][reference_index][key]);
+            const container = beer['containers'][reference_index];
+            if (key in container)
+                return formatter(container[key]);
+            return formatter(beer[key]);
         });
     
         return beer_info

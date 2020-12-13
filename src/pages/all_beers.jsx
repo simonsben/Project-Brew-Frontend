@@ -6,7 +6,7 @@ import { assemble_beer_info } from '../actions/assemble_data';
 
 const AllBeers = props => {
     const { beers } = props;
-    const { header, beer_info, is_numeric } = assemble_beer_info(beers);
+    const { header, beer_info, is_numeric } = assemble_beer_info({beers});
 
 
     return (

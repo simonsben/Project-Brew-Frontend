@@ -15,11 +15,15 @@ const sale_target = {
 
 
 const OnSale = props => {
-    const on_sale = props.beers
+    const beers = props.beers
         .map(beer => {
-            beer['containers'] = beer['containers'].filter(container => container['sale_percent'] > 0);
+            let has_sale = false;
+            beer['containers'].forEach(container => {
+                if (container['sale_percent'] > 0)
+                    has_sale = true;
+            });
             
-            if (beer['containers'].length <= 0)
+            if (!has_sale)
                 return null;
 
             beer['main'] = arg_max(beer['containers'], null, 'sale_percent')['max_index'];
@@ -41,11 +45,7 @@ const OnSale = props => {
         });
     
     
-
-    console.log(on_sale);
-
-    
-    const { header, beer_info, is_numeric } = assemble_beer_info(on_sale, sale_target);
+    const { header, beer_info, is_numeric } = assemble_beer_info({beers, target: sale_target});
 
     return (
         <Fragment>

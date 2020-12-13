@@ -2,14 +2,13 @@ const { get } = require('axios');
 const moment = require('moment');
 const { gunzip } = require('zlib');
 
-
 const get_beers = () => {
     const data_time = moment(localStorage.getItem('data_time'));
     const now = moment().local();
 
     return new Promise((resolve, reject) => {
         // If data time exists and is the same as the current day, keep data.
-        if (!!data_time && now.isSame(data_time, 'day')) {
+        if (data_time && (now.isSame(data_time, 'day') || now.hour() <= 8)) {
             const raw_data = localStorage.getItem('beer_data');
             console.log('Data is current, using cached.');
             

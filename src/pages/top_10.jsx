@@ -6,8 +6,10 @@ import { assemble_beer_info } from '../actions/assemble_data';
 
 const Top10 = props => {
     const { beers } = props;
+    console.log(beers)
+
     const top_10 = beers.slice(0, 10);
-    const { header, beer_info, is_numeric } = assemble_beer_info(top_10);
+    const { header, beer_info, is_numeric } = assemble_beer_info({beers: top_10});
 
     return (
         <Fragment>

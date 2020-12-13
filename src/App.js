@@ -8,6 +8,7 @@ import AllBeers from './pages/all_beers';
 import OnSale from './pages/on_sale';
 import Kegs from './pages/kegs';
 import Home from './pages/home';
+import Beer from './pages/beer';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.scss';
 
@@ -56,6 +57,10 @@ class App extends Component {
                             <Route path='/kegs'>
                                 <Kegs beers={ beers } />
                             </Route>
+
+                            <Route 
+                                path='/beers/:beer_name' 
+                                render={router_props => <Beer { ...router_props } beers={ beers } />}/>
 
                             <Route path="/">
                                 <Home />
