@@ -13,8 +13,11 @@ const AllBeers = props => {
         <Fragment>
             <Row className='top_pad'>
                 <Col>
-                    <h1 className='display-4 center_text'>Best value beers</h1>
-                    <p className='lead larger center_text'>Here is every beer sold at <a href='https://www.thebeerstore.ca/'>The Beer Store</a> ranked by the mL of alcohol per dollar.</p>
+                    <h1 className='display-4 text-center'>Best value beers</h1>
+                    <p className='lead text-center'>
+                        <span className='larger'>Here is every beer sold at <a href='https://www.thebeerstore.ca/'>The Beer Store</a> ranked by the mL of alcohol per dollar. </span><br />
+                        Click on a beer for more information.
+                    </p>
                 </Col>
             </Row>
             <Row>

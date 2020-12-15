@@ -54,8 +54,11 @@ const OnSale = props => {
         <Fragment>
             <Row className='top_pad'>
                 <Col>
-                    <h1 className='display-4 center_text'>Beers on sale</h1>
-                    <p className='lead larger center_text'>Here are the beers on sale, ranked by how big the sale is.</p>
+                    <h1 className='display-4 text-center'>Beers on sale</h1>
+                    <p className='lead text-center'>
+                        <span className='larger'>Here are the beers on sale, ranked by how big the sale is. </span><br />
+                        Click on a beer for more information.
+                    </p>
                 </Col>
             </Row>
             <Row>

@@ -14,8 +14,11 @@ const Top10 = props => {
         <Fragment>
             <Row className='top_pad'>
                 <Col>
-                    <h1 className='display-4 center_text'>Top 10 beers</h1>
-                    <p className='lead larger center_text'>Below is a summary of the top 10 beers based on the mL of alcohol per dollar.</p>
+                    <h1 className='display-4 text-center'>Top 10 beers</h1>
+                    <p className='lead text-center'>
+                        <span className='larger'>Below is a summary of the top 10 beers based on the mL of alcohol per dollar. </span><br />
+                        Click on a beer for more information.
+                    </p>
                 </Col>
             </Row>
             {/* <Row>Graph is here.</Row> */}

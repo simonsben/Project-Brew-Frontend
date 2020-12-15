@@ -61,8 +61,11 @@ const Kegs = props => {
         <Fragment>
             <Row className='top_pad'>
                 <Col>
-                    <h1 className='display-4 center_text'>Kegs! Kegs! Kegs!</h1>
-                    <p className='lead larger center_text'>Here are the kegs sold by the beer store, ranked by amount of beer per dollar.</p>
+                    <h1 className='display-4 text-center'>Kegs! Kegs! Kegs!</h1>
+                    <p className='lead text-center'>
+                        <span className='larger'>Here are the kegs sold by the beer store, ranked by amount of beer per dollar. </span><br />
+                        Click on a beer for more information.
+                    </p>
                 </Col>
             </Row>
             <Row>

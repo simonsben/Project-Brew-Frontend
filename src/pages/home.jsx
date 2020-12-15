@@ -8,8 +8,8 @@ const Home = props => {
         <div className='landing'>
             <Row className='top_pad'>
                 <Col>
-                    <h1 className='display-2 center_text'>Project Brew</h1>
-                    <p className='larger lead center_text'>The name of the game is information, and you need the best when it comes to your beer.</p>
+                    <h1 className='display-2 text-center'>Project Brew</h1>
+                    <p className='larger lead text-center'>The name of the game is information, and you need the best when it comes to your beer.</p>
                 </Col>
             </Row>
             <hr />
@@ -17,7 +17,7 @@ const Home = props => {
             <Row>
                 <Col>
                     <p className='h1'>Why does this project exist?</p>
-                    <p className='lead'>This project exists because I care, maybe too much, that you know what's what with beer store prices.</p>
+                    <p className='lead'>This project exists because I care, maybe too much, that you know what's what with The Beer Store's prices.</p>
                 </Col>
             </Row>
             <hr />
