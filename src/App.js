@@ -28,6 +28,8 @@ class App extends Component {
     }
 
     update_beer = beers => {
+        if (!beers) beers = [];
+
         if (beers.length !== this.state.beers.length)
             this.setState(state => ({ ...state, beers }))
     }
