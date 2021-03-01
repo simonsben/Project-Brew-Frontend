@@ -12,8 +12,8 @@ const AdvTable = props => {
     const generate_linker = beer_name => {
         if (!no_url)
             return () => history.push(`/beers/${beer_name}`);
-        return () => '#';
-    }
+        return null;
+    };
 
     return (
         <Table responsive striped hover>
@@ -31,7 +31,7 @@ const AdvTable = props => {
                         const beer_name = make_url(item[0]);
 
                         return (
-                            <tr onClick={generate_linker(beer_name)} key={ index }>
+                            <tr className={ no_url ? '' : 'clickable_row' } onClick={generate_linker(beer_name)} key={ index }>
                                 {
                                     Array.isArray(item) ?
                                     item.map((attribute, sub_index) => (
@@ -49,10 +49,10 @@ const AdvTable = props => {
                 }
             </tbody>
         </Table>
-    )
+    );
 }
 
 export default AdvTable;
 export {
     make_url
-}
+};

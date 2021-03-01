@@ -8,8 +8,9 @@ It is simply meant to cleanly display the data collected by Project Brew.
 
 - [X] Rebuild site using React and better code
 - [X] Statically host the site on S3
-- [ ] Remove the need to relead the page during navigation
-- [ ] Fix default files and information setup by CreateReactApp
+- [X] Remove the need to relead the page during navigation
+- [X] Fix default files and information setup by CreateReactApp
+- [X] Add individual beer pages
 - [ ] Add a *smart* search page
 - [ ] Add graphs
-- [ ] Add individual beer pages
+- [ ] Add option to subtract the deposit amount

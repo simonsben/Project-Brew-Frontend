@@ -1,6 +1,7 @@
 import React from 'react';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+import { Link } from 'react-router-dom';
 import '../App.scss';
 
 const Home = props => {
@@ -26,7 +27,7 @@ const Home = props => {
                     <p className='h1'>Why should I trust this?</p>
                     <p className='lead'>
                         A beer's price isn't a matter of opinion, either it's cheap or it's not. <br />
-                        The information is updated automatically every morning from <a href='https://www.thebeerstore.ca/'>The Beer Store</a> website.
+                        The information is automatically updated every morning from <a href='https://www.thebeerstore.ca/'>The Beer Store</a> website.
                     </p>
                 </Col>
             </Row>
@@ -34,7 +35,7 @@ const Home = props => {
             <Row>
                 <Col>
                     <p className='h1'>Enough reading, I want cheap beer.</p>
-                    <p className='lead'>Me too friend, me too. Why not start by checking out the <a href='/top_10'>10 cheapest beers</a> right now?</p>
+                    <p className='lead'>Me too friend, me too. Why not start by checking out the <Link to='/top_10'>10 cheapest beers</Link> right now?</p>
                 </Col>
             </Row>
         </div>
